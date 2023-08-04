@@ -25,8 +25,7 @@ class Spinner:
             str: A cursor character for the spinning animation.
         """
         while 1:
-            for cursor in '|/-\\':
-                yield cursor
+            yield from '|/-\\'
 
     def __init__(self, delay=None):
         """
@@ -59,6 +58,4 @@ class Spinner:
     def __exit__(self, exception, value, tb):
         self.busy = False
         time.sleep(self.delay)
-        if exception is not None:
-            return False
-        return True
+        return exception is None
